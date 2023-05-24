@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {}
+.title {}
+.title h1 {
+    color: #D6970A;
+  font-family: 'Abril Fatface', cursive;
+}
+.filterContainer {
+    margin: 20px;
+}
+.filterButtons {
+    width: 100px;
+    border: none;
+    border-radius: 20px;
+color: white;
+padding: 5px;
+margin: 10px;
+background-color: pink;
+
+
+font-family: 'Abril Fatface', cursive;
+}
+.filterButtons:hover {
+    background-color: #D6970A;
+}
+.boxes {
+    height: 200px;
+}
+img {
+    
+    border: 2px solid #D6970A;
+}
+.menuItems {}
+.itemNprice {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+  font-family: 'Abril Fatface', cursive;
+}
+.price {
+    font-size: 18px;
+}
+
+    
