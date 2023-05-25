@@ -18,21 +18,66 @@
   <div class="container mainContainer">
 
     <div class="row everythingButFooter">
-      <!-- Header -->
-      <div class="title text-center">
-        <h1>Menu</h1>
-      </div>
-      <!-- Filters -->
-      <div class="text-center filterContainer">
-        <!-- Buttons will be rendered here -->
-      </div>
-      <!-- Menu Display -->
-      <div class="container menuItems">
-        <div class="row menu">
-          <!-- Menu items will be rendered here -->
+
+      <div class="menuSection">
+        <!-- Header -->
+        <div class="title text-center">
+          <h1>Menu</h1>
         </div>
-      </div>
+        <!-- Filters -->
+        <div class="text-center filterContainer">
+          <!-- Buttons will be rendered here -->
+        </div>
+        <!-- Menu Display -->
+        <div class="container menuItems">
+          <div class="row menu">
+            <!-- Menu items will be rendered here -->
+          </div>
+        </div>
+      </div><!--menuSection-->
+
+      <!-- Reviews -->
+      <div class="container reviewSection">
+        <!-- Header -->
+        <div class="title text-center">
+          <h1>Reviews</h1>
+        </div>
+        <!-- Carousel container -->
+        <div class="row">
+          <div class="col-xs-1 col-sm-2">
+            <div class="prev">
+              <button class="leftB" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+          <!-- Review card -->
+          <div class="col-xs-10 col-sm-8">
+            <div class="card text-center reviewContainer">
+              <img src="" class="reviewImage mx-auto d-block" id="image" alt="..." height="200px" width="30%">
+              <div class="card-body">
+                <h5 class="card-title">... <span id="highlight"></span> ...</h5>
+                <p class="card-text" id="reviewText"></p>
+                <p class="card-text" id="credit"></p>
+                <h6 class="card-subtitle mb-2 text-muted" id="customerName"></h6>
+              </div>
+            </div>
+          </div><!--Review card-->
+
+          <div class="col-xs-1 col-sm-2">
+            <div class="next">
+              <button class="rightB" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+        </div><!-- Carousel container -->
+
+      </div><!-- Review section -->
+
     </div><!--everythingButFooter-->
+
     <!-- Footer -->
     <div class="text-center footer">
       <small>Background Photo by <a
