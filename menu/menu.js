@@ -81,42 +81,115 @@ const menuitems = [
     },
 
 ];
-
+const reviews = [
+    {
+        img: "./images/matheus.jpg",
+        highlight: "porttitor",
+        review: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.`,
+        credit: `Photo by <a href="https://unsplash.com/@matheusferrero?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Matheus Ferrero</a> on <a href="https://unsplash.com/images/people?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        `,
+        name: "Ama",
+    },
+    {
+        img: "./images/ayo.jpg",
+        highlight: "Pellentesque habitant morbi tristique",
+        review: ` Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.`,
+        credit: `Photo by <a href="https://unsplash.com/@armedshutter?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ayo Ogunseinde</a> on <a href="https://unsplash.com/images/people?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        `,
+        name: "Abena",
+    },
+    {
+        img: "./images/ian.jpg",
+        highlight: "scelerisque at, vulputate vitae",
+        review: ` Mauris et orci. Aenean nec lorem. In porttitor. Donec laoreet nonummy augue. Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.`,
+        credit: `Photo by <a href="https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ian dooley</a> on <a href="https://unsplash.com/images/people?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        `,
+        name: "Abena",
+    },
+    {
+        img: "./images/vince.jpg",
+        highlight: "semvenenatis eleifend",
+        review: `Mauris eget neque at semvenenatis eleifend. Ut nonummy. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.`,
+        credit: `Photo by <a href="https://unsplash.com/@vincefleming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Vince Fleming</a> on <a href="https://unsplash.com/images/people?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+        `,
+        name: "Akua",
+    },
+]
+//Menu items variables
 const menu = document.querySelector('.menu');
 const filterbtnContainer = document.querySelector(".filterContainer");
+//review variables
+const prev = document.querySelector('.leftB');
+const next = document.querySelector('.rightB');
+const img = document.getElementById("image");
+const highlight = document.getElementById("highlight");
+const reviewText = document.getElementById("reviewText");
+const credit = document.getElementById("credit");
+const customerName = document.getElementById("customerName");
+
+let currentSlide = 1;
 
 window.addEventListener('DOMContentLoaded', function () {
     displayMenuItems(menuitems);
-    //looks through array for different values of category property
-    const categories = menuitems.reduce(function (values, item) {
-        if (!values.includes(item.category)) {
-            values.push(item.category)
-        }
-        return values
-    }, ["all"])
-    const catbtns = categories.map(function (category) {
-        return `<button class="filterButtons" type="button" data-id=${category}>${category}</button>`;
-    })
-        .join("");
-    filterbtnContainer.innerHTML = catbtns;
-    const filterButtons = document.querySelectorAll(".filterButtons");
-    // filter
-    filterButtons.forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-            const category = e.currentTarget.dataset.id;
-            const menuCategory = menuitems.filter(function (menuitemsparam) {
-                if (menuitemsparam.category === category) {
-                    return menuitemsparam;
-                }
-            });
-            if (category === "all") {
-                displayMenuItems(menuitems)
-            } else {
-                displayMenuItems(menuCategory)
+    displayReview(currentSlide);
+})
+
+//Display reviews
+function displayReview(customerReview) {
+    const index = reviews[customerReview];
+    img.src = index.img;
+    highlight.textContent = index.highlight;
+    reviewText.textContent = index.review;
+    credit.innerHTML = index.credit;
+    customerName.textContent = index.name;
+}
+//Show next slide
+next.addEventListener('click', function () {
+    currentSlide++;
+    if (currentSlide > reviews.length - 1) {
+        currentSlide = 0;
+    }
+    displayReview(currentSlide);
+})
+//Show previous slide
+prev.addEventListener('click', function () {
+    currentSlide--;
+    if (currentSlide < 0) {
+        currentSlide = reviews.length - 1;
+    }
+    displayReview(currentSlide);
+})
+
+//Look through the array for different values of category property
+const categories = menuitems.reduce(function (values, item) {
+    if (!values.includes(item.category)) {
+        values.push(item.category)
+    }
+    return values
+}, ["all"])
+const catbtns = categories.map(function (category) {
+    return `<button class="filterButtons" type="button" data-id=${category}>${category}</button>`;
+})
+    .join("");
+filterbtnContainer.innerHTML = catbtns;
+const filterButtons = document.querySelectorAll(".filterButtons");
+// filter
+filterButtons.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+        const category = e.currentTarget.dataset.id;
+        const menuCategory = menuitems.filter(function (menuitemsparam) {
+            if (menuitemsparam.category === category) {
+                return menuitemsparam;
             }
         });
+        if (category === "all") {
+            displayMenuItems(menuitems)
+        } else {
+            displayMenuItems(menuCategory)
+        }
     });
 });
+
 // renders menu items
 function displayMenuItems(menuitemsparam) {
     let displayMenu = menuitemsparam.map(function (item) {
