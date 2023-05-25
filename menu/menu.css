@@ -3,10 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     min-height: 100vh;
     position: relative;
 }
+
+.mainContainer {
+    position: relative;
+    min-height: 100vh;
+}
+
+.everythingButFooter {
+    padding-bottom: 63px;
+}
+
 .title h1 {
     color: #D6970A;
     font-family: 'Abril Fatface', cursive;
@@ -81,5 +92,10 @@ p {
 
 .footer {
     background-color: #dabcee98;
-    padding: 15px;
+    padding: 10px;
+    height: 63px;
+    width: 100%;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
 }
